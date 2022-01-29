@@ -7,13 +7,27 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "pod-install": "npx pod-install ios"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.7",
+    "ahooks": "^3.1.9",
+    "axios": "^0.25.0",
+    "camelcase-keys": "^7.0.1",
+    "date-fns": "^2.28.0",
+    "lodash": "^4.17.21",
     "mobx": "^6.3.13",
     "mobx-react-lite": "^3.2.3",
     "react": "17.0.2",
-    "react-native": "0.67.1"
+    "react-native": "0.67.1",
+    "react-native-gesture-handler": "^2.2.0",
+    "react-native-get-random-values": "^1.7.2",
+    "react-native-reanimated": "^2.3.1",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.2",
+    "snakecase-keys": "^5.1.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -22,6 +36,7 @@
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.66.4",
     "@types/react-test-renderer": "^17.0.1",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.10.1",
     "babel-jest": "^26.6.3",

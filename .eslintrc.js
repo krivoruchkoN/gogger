@@ -12,6 +12,8 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     'react/function-component-definition': 'off',
+    'lines-between-class-members': 'off',
+    'no-unused-vars': 'off',
     'prettier/prettier': [
       'error',
       {
@@ -30,6 +32,8 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       rules: {
         '@typescript-eslint/no-shadow': ['error'],
+        '@typescript-eslint/lines-between-class-members': ['off'],
+        '@typescript-eslint/no-unused-vars': ['warn'],
         'no-shadow': 'off',
         'no-undef': 'off',
         'no-use-before-define': 'off',
