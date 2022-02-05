@@ -12,9 +12,10 @@ import { friendsStoreContext } from './stores/friendsStore';
 import { eventsStoreContext } from './stores/eventsStore';
 
 import SentryComponent from './components/SentryComponent';
+import AmplitudeComponent from './components/AmplitudeComponent';
 
 Sentry.init({
-  dsn: 'https://c22d97e008c44c459575b6c204cf9dc0@o1133804.ingest.sentry.io/6180640',
+  dsn: 'https://c22d97e008c44c459575b6c204cf9dc0@o1133804.ingest.sentry.io/6180640', // TODO ENV
   // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
   // Sentry recommend adjusting this value in production.
   tracesSampleRate: 1,
@@ -99,7 +100,10 @@ const Home = observer(() => {
           <EventList />
         </View>
       )}
-      <SentryComponent />
+      <ScrollView>
+        <SentryComponent />
+        <AmplitudeComponent />
+      </ScrollView>
     </SafeAreaView>
   );
 });
