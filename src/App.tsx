@@ -1,13 +1,24 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { createContext, useContext } from 'react';
 import { Button, ScrollView, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { observer } from 'mobx-react-lite';
+import * as Sentry from '@sentry/react-native';
 
 import rootStore, { RootStore, rootStoreContext } from './stores';
 import { userStoreContext } from './stores/userStore';
 import { friendsStoreContext } from './stores/friendsStore';
 import { eventsStoreContext } from './stores/eventsStore';
+
+import SentryComponent from './components/SentryComponent';
+
+Sentry.init({
+  dsn: 'https://c22d97e008c44c459575b6c204cf9dc0@o1133804.ingest.sentry.io/6180640',
+  // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+  // Sentry recommend adjusting this value in production.
+  tracesSampleRate: 1,
+});
 
 const UserProfile = observer(() => {
   const userStore = useContext(userStoreContext);
@@ -88,6 +99,7 @@ const Home = observer(() => {
           <EventList />
         </View>
       )}
+      <SentryComponent />
     </SafeAreaView>
   );
 });
@@ -104,4 +116,4 @@ const App = () => (
   </SafeAreaProvider>
 );
 
-export default App;
+export default Sentry.wrap(App);
