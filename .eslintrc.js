@@ -11,6 +11,7 @@ module.exports = {
   ],
   rules: {
     'react/prop-types': 'off',
+    'react/require-default-props': 'off',
     'react/function-component-definition': 'off',
     'lines-between-class-members': 'off',
     'no-unused-vars': 'off',
@@ -21,6 +22,7 @@ module.exports = {
         singleQuote: true,
         trailingComma: 'all',
         arrowParens: 'always',
+        jsxSingleQuote: true,
       },
     ],
   },
