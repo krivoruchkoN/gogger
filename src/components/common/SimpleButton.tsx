@@ -1,19 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
+interface Props {
+  title: string;
+  onPress: () => void;
+  btnStyle?: Object;
+  textStyle?: Object;
+  activeOpacity?: number;
+}
+
 const SimpleButton = ({
   title,
   btnStyle,
   textStyle,
   onPress,
   activeOpacity,
-}: {
-  title: string;
-  onPress: () => void;
-  btnStyle?: Object;
-  textStyle?: Object;
-  activeOpacity?: number;
-}) => (
+}: Props) => (
   <TouchableOpacity
     style={{ ...styles.wrap, ...btnStyle }}
     onPress={onPress}
@@ -22,8 +24,6 @@ const SimpleButton = ({
     <Text style={{ ...styles.text, ...textStyle }}>{title}</Text>
   </TouchableOpacity>
 );
-
-SimpleButton.defaultProps = { btnStyle: {}, textStyle: {}, activeOpacity: 0.8 };
 
 export default SimpleButton;
 
