@@ -11,6 +11,7 @@ module.exports = {
   ],
   rules: {
     'react/prop-types': 'off',
+    'react/require-default-props': 'off',
     'react/function-component-definition': 'off',
     'lines-between-class-members': 'off',
     'no-unused-vars': 'off',
