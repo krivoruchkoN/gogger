@@ -22,6 +22,7 @@ module.exports = {
         singleQuote: true,
         trailingComma: 'all',
         arrowParens: 'always',
+        jsxSingleQuote: true,
       },
     ],
   },
