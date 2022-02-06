@@ -1,20 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 interface Props {
   title: string;
   onPress: () => void;
-  btnStyle?: Object;
-  textStyle?: Object;
+  btnStyle?: ViewStyle;
+  textStyle?: TextStyle;
   activeOpacity?: number;
 }
 
 const SimpleButton = ({
   title,
-  btnStyle,
-  textStyle,
   onPress,
-  activeOpacity,
+  btnStyle = {},
+  textStyle = {},
+  activeOpacity = 0.8,
 }: Props) => (
   <TouchableOpacity
     style={{ ...styles.wrap, ...btnStyle }}
