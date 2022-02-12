@@ -23,3 +23,19 @@ export interface User {
 export interface CurrentUser extends User {
   auth: UserAuth;
 }
+
+export interface APIUser {
+  id: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  middle_name: string | null;
+  birth_date: string | null;
+  description: string | null;
+  gender: string | null;
+}
+// обсудить DTO
+
+export interface APIUserResults {
+  results: APIUser[];
+}
