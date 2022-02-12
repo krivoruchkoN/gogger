@@ -3,6 +3,8 @@ import { makeAutoObservable } from 'mobx';
 import { v4 as uuid } from 'uuid';
 
 import * as UserTypes from './types';
+import UsersService from '../../api/services/UsersServices';
+import { globalErrorHandler } from '../../api/globalErrorHandler';
 
 const userMock: UserTypes.CurrentUser = {
   id: uuid(),
@@ -18,6 +20,7 @@ const userMock: UserTypes.CurrentUser = {
 export class UserStore {
   currentUser: UserTypes.CurrentUser | null = null;
   loading: 'pending' | 'loading' | 'failed' = 'pending';
+  users: UserTypes.APIUser[] | [] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -46,6 +49,28 @@ export class UserStore {
     } finally {
       this.loading = 'pending';
     }
+  };
+
+  setUsers = (users: UserTypes.APIUser[]) => {
+    this.users = users;
+  };
+
+  fetchAllUsers = async () => {
+    try {
+      this.loading = 'loading';
+      const resp = await UsersService.fetchUsers();
+      const usersFromServer = resp.data.results;
+      this.setUsers(usersFromServer);
+    } catch (error) {
+      globalErrorHandler(error);
+      this.loading = 'failed';
+    } finally {
+      this.loading = 'pending';
+    }
+  };
+
+  clearUsers = () => {
+    this.users = [];
   };
 }
 

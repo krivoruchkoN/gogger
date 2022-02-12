@@ -4,11 +4,13 @@ import { makeObservable, observable } from 'mobx';
 import userStore, { UserStore } from './userStore';
 import friendsStore, { FriendsStore } from './friendsStore';
 import eventsStore, { EventsStore } from './eventsStore';
+import authStore, { AuthStore } from './authStore';
 
 export class RootStore {
   userStore: UserStore;
   friendsStore: FriendsStore;
   eventsStore: EventsStore;
+  authStore: AuthStore;
   loading: 'pending' | 'loading' | 'failed' = 'pending';
 
   constructor() {
@@ -19,6 +21,7 @@ export class RootStore {
     this.userStore = userStore;
     this.friendsStore = friendsStore;
     this.eventsStore = eventsStore;
+    this.authStore = authStore;
 
     this.initApp();
   }
