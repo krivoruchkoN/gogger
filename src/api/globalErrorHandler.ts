@@ -15,7 +15,7 @@ const getAlertError404 = () =>
     },
   });
 
-const getDefaultErrorAlert = () =>
+const getDefaultErrorAlert = (): void =>
   createTwoButtonAlert({
     title: 'Произошла ошибка',
     description: 'Отчёт был отправлен разработчикам',
@@ -31,10 +31,7 @@ const getDefaultErrorAlert = () =>
     },
   });
 
-/* eslint-disable import/prefer-default-export */
-// обсудить с мобильщиками
-export const globalErrorHandler = (error: never | AxiosError): void => {
-  // обсудить с мобильщиками правило линта с функциями без return и тип для этой ошибки
+const globalErrorHandler = (error: any | AxiosError) => {
   const statusCode = error?.response?.status;
   switch (true) {
     case statusCode === 401:
@@ -42,8 +39,12 @@ export const globalErrorHandler = (error: never | AxiosError): void => {
       console.log('!!! TODO выкинуть на экран логина и пароля');
       break;
     case statusCode === 404:
-      return getAlertError404();
+      getAlertError404();
+      break;
     default:
-      return getDefaultErrorAlert();
+      getDefaultErrorAlert();
+      break;
   }
 };
+
+export default globalErrorHandler;

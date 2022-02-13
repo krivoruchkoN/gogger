@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 
 import * as UserTypes from './types';
 import UsersService from '../../api/services/UsersServices';
-import { globalErrorHandler } from '../../api/globalErrorHandler';
+import globalErrorHandler from '../../api/globalErrorHandler';
 
 const userMock: UserTypes.CurrentUser = {
   id: uuid(),

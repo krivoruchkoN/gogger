@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthResponse } from './types';
 import AuthService from '../../api/services/AuthService';
 import { setTokensToStorage } from '../../commonUtils/utils';
-import { globalErrorHandler } from '../../api/globalErrorHandler';
+import globalErrorHandler from '../../api/globalErrorHandler';
 
 export class AuthStore {
   loading: 'pending' | 'loading' | 'failed' = 'pending';
@@ -16,18 +16,17 @@ export class AuthStore {
   login = async (
     email: string = 'p7chkn@yandex.ru',
     pass: string = 'OlegTheBest2022',
-  ): Promise<AuthResponse | void> => {
-    // обсудить с мобильщиками - такой тип - норм?
+  ): Promise<AuthResponse | undefined> => {
     try {
       this.loading = 'loading';
       const response = await AuthService.login(email, pass);
       const { access, refresh } = response.data;
       await setTokensToStorage({ accessToken: access, refreshToken: refresh });
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       globalErrorHandler(error);
-      // обсудить. Не поинмаю почему TS ругается
       this.loading = 'failed';
+      return undefined;
     } finally {
       this.loading = 'pending';
     }

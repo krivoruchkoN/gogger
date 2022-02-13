@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-import $api from '..';
+import $api from '../api';
 import { APIUserResults } from '../../stores/userStore/types';
 import routes from '../routes';
 
