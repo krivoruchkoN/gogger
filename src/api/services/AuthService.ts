@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AxiosResponse } from 'axios';
 
-import $api from '..';
+import $api from '../api';
 import { AuthResponse } from '../../stores/authStore/types';
 import routes from '../routes';
 
