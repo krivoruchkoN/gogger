@@ -6,7 +6,8 @@ import {
   AxiosResponse,
 } from 'axios';
 import { setTokensToStorage } from '../commonUtils/utils';
-import AuthService from './services/AuthService';
+import { AuthResponse } from '../stores/authStore/types';
+import routes from './routes';
 
 const errorHandler = async (
   error: AxiosError,
@@ -17,7 +18,11 @@ const errorHandler = async (
     error.response?.data?.detail === 'Token is invalid or expired';
 
   if (error.response?.status === 401 && !isInvalidRefreshToken) {
-    const response = await AuthService.getNewTokens();
+    const refresh = await AsyncStorage.getItem('refreshToken');
+
+    const response = await axiosInstance.post<AuthResponse>(routes.refresh, {
+      refresh,
+    });
     const { access, refresh: newRefreshToken } = response.data;
     await setTokensToStorage({
       accessToken: access,

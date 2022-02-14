@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AxiosResponse } from 'axios';
 
 import $api from '../api';
@@ -14,9 +13,4 @@ export default class AuthService {
       email,
       password: pass,
     });
-
-  static getNewTokens = async () => {
-    const refresh = await AsyncStorage.getItem('refreshToken');
-    return $api.post<AuthResponse>(routes.refresh, { refresh });
-  };
 }
